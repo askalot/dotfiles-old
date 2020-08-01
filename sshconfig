@@ -1,0 +1,11 @@
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+
+Host servername
+  HostName domain.tld
+  User username
+  Port 22
+  IdentityFile ~/.ssh/id_servername
+
