@@ -1,0 +1,9 @@
+[user]
+  name = Firstname Lastname
+  email = username@domain.tld
+[github]
+  user = username
+[alias]
+  la = log --oneline --decorate --graph --stat
+  ls = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
+
