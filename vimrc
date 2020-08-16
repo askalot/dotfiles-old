@@ -8,8 +8,6 @@ set autoread
 set history=1000
 " jj exists Insert Mode
 :imap jj <Esc>
-" Ctrl+t creates new tab
-map <C-t> <esc>:tabnew<CR>
 
 " :PlugInstall vim-plug plugins
 " -----------------------------
@@ -75,6 +73,15 @@ set scrolloff=1
 set sidescrolloff=5
 " Try to show paragraph last line
 set display+=lastline
+
+" Tabs
+" ----
+" Ctrl+t creates new tab
+map <C-t> <esc>:tabnew<CR>
+" Ctrl+Shift+Left switches to next tab
+noremap <C-S-left> <esc>:tabprev<cr>
+" Ctrl+Shift+Right switches to previous tab
+noremap <C-S-right> <esc>:tabnext<cr>
 
 " Folding
 " -------
@@ -171,3 +178,4 @@ let g:netrw_winsize=25
 let g:netrw_list_hide=netrw_gitignore#Hide()
 " CTRL+b opens Netrw
 noremap <silent> <C-b> :Vexplore<CR>
+
