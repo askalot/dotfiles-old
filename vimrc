@@ -6,6 +6,8 @@ set nocompatible
 set autoread
 " Increase search history
 set history=1000
+" Turn off bell
+set belloff=all
 " jj exists Insert Mode
 :imap jj <Esc>
 
