@@ -20,9 +20,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'rakr/vim-one'
 " Better syntax highlighting
 Plug 'sheerun/vim-polyglot'
+" Fuzzy find
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " ESLint
 Plug 'dense-analysis/ale'
 call plug#end()
+
+" fzf
+" ---
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
 
 " ESLint
 " ------
