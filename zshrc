@@ -1,3 +1,10 @@
+# vi mode
+bindkey -v
+
+# Search history
+bindkey -M vicmd '/' history-incremental-search-backward
+bindkey '^R' history-incremental-pattern-search-backward
+
 # VCS info
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -39,4 +46,5 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # chruby settings
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
+
 
