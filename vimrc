@@ -1,5 +1,5 @@
-" General
-" -------
+" General {{{
+" -----------
 " Use Vim instead of vi
 set nocompatible
 " Reload file if edited outside Vim
@@ -10,9 +10,10 @@ set history=1000
 set belloff=all
 " jj exists Insert Mode
 :imap jj <Esc>
+" }}}
 
-" :PlugInstall vim-plug plugins
-" -----------------------------
+" :PlugInstall vim-plug plugins {{{
+" ---------------------------------
 call plug#begin()
 " Better status bar
 Plug 'vim-airline/vim-airline'
@@ -26,24 +27,27 @@ Plug 'junegunn/fzf.vim'
 " ESLint
 Plug 'dense-analysis/ale'
 call plug#end()
+" }}}
 
-" fzf
-" ---
+" fzf {{{
+" -------
 nnoremap <C-p> :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
+" }}}
 
-" ESLint
-" ------
+" ESLint {{{
+" ----------
 let g:ale_sign_error = '🚩'
 let g:ale_sign_warning = '⚠️'
 let g:ale_fixers = {}
 let g:ale_fixers['javascript'] = ['eslint']
 " Automatically fix files on save
 let g:ale_fix_on_save = 1
+" }}}
 
-" Colours
-" -------
+" Colours {{{
+" -----------
 colorscheme one
 set background=dark
 " Use correct colour palette
@@ -54,9 +58,10 @@ syntax enable
 set cursorline
 " Highlight column after textwidth
 set colorcolumn=+1
+" }}}
 
-" Whitespace characters
-" ---------------------
+" Whitespace characters {{{
+" -------------------------
 set listchars=""
 set listchars+=tab:▸\ 
 set listchars+=trail:·
@@ -66,36 +71,40 @@ set listchars+=nbsp:+
 "set listchars+=eol:¬
 "Always show whitespace characters
 set list
+" }}}
 
-" Line numbers
-" ------------
+" Line numbers {{{
+" ----------------
 set number
 set numberwidth=5
 set relativenumber
 " Disable relativenumber in Insert Mode
 autocmd InsertEnter * :set norelativenumber
 autocmd InsertLeave * :set relativenumber
+" }}}
 
-" Scrolling
-" ---------
+" Scrolling {{{
+" -------------
 " Number of lines offset from cursor top or bottom
 set scrolloff=1
 " Number of columns offset from cursor left or right
 set sidescrolloff=5
 " Try to show paragraph last line
 set display+=lastline
+" }}}
 
-" Tabs
-" ----
+" Tabs {{{
+" --------
 " Ctrl+t creates new tab
 map <C-t> <esc>:tabnew<CR>
 " Ctrl+Shift+Left switches to next tab
 noremap <C-S-left> <esc>:tabprev<cr>
 " Ctrl+Shift+Right switches to previous tab
 noremap <C-S-right> <esc>:tabnext<cr>
+" }}}
 
-" Folding
-" -------
+" Folding {{{
+" -----------
 " Indent based fold
 set foldmethod=indent
 " Only fold upto 3 nested levels
@@ -104,9 +113,10 @@ set foldnestmax=3
 set nofoldenable
 " Shift+Tab toggles fold
 nnoremap <S-Tab> za
+" }}}
 
-" Indentation
-" -----------
+" Indentation {{{
+" ---------------
 " Inherit line indentation
 set autoindent
 " Insert Mode backspace works
@@ -123,9 +133,10 @@ set softtabstop=2
 if has("autocmd")
   filetype plugin indent on
 endif
+" }}}
 
-" Tab completion
-" --------------
+" Tab completion {{{
+" ------------------
 set wildmode=list:longest,list:full
 function! InsertTabWrapper()
   let col = col('.') - 1
@@ -139,9 +150,10 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
 inoremap <S-Tab> <C-n>
+" }}}
 
-" Window search
-" -------------
+" Window search {{{
+" -----------------
 " Highlight search results
 set hlsearch
 " Search ignores case
@@ -152,18 +164,20 @@ set incsearch
 set smartcase
 " CTRL+L clears highlighted search results
 nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+" }}}
 
-" :grep files
-" -----------
+" :grep files {{{
+" ---------------
 " Use ag instead of grep
 if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 " K greps word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" }}}
 
-" :find files
-" -----------
+" :find files {{{
+" ---------------
 set path+=**
 set wildmenu
 " Ignore select files and folders
@@ -172,9 +186,10 @@ set wildignore+=*.swp
 set wildignore+=*.git/
 set wildignore+=.vscode/
 set wildignore+=*node_modules/*
+" }}}
 
-" Netrw file manager
-" ------------------
+" Netrw file manager {{{
+" ----------------------
 " Disable banner
 let g:netrw_banner=0
 " Tree style file list
@@ -189,4 +204,6 @@ let g:netrw_winsize=25
 let g:netrw_list_hide=netrw_gitignore#Hide()
 " CTRL+b opens Netrw
 noremap <silent> <C-b> :Vexplore<CR>
+" }}}
 
+" vim:foldmethod=marker
