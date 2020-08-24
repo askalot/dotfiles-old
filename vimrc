@@ -49,7 +49,7 @@ let g:ale_fix_on_save = 1
 " Colours {{{
 " -----------
 colorscheme one
-set background=dark
+set background=light
 " Use correct colour palette
 set termguicolors
 " Enable syntax highlighting
