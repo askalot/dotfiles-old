@@ -5,6 +5,7 @@
   "editor.tabSize": 2,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 100,
+  "files.insertFinalNewline": true,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "workbench.colorTheme": "Atom One Light",
