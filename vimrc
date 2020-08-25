@@ -8,6 +8,8 @@ set autoread
 set history=1000
 " Turn off bell
 set belloff=all
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
 " jj exists Insert Mode
 :imap jj <Esc>
 " }}}
