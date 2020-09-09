@@ -3,8 +3,9 @@
   email = username@domain.tld
 [github]
   user = username
+[init]
+  defaultBranch = main
 [alias]
-  co = checkout
   la = log --oneline --decorate --graph --stat
   ls = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
 
