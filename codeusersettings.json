@@ -8,6 +8,7 @@
   "files.insertFinalNewline": true,
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
+  "terminal.integrated.fontSize": 14,
   "workbench.colorTheme": "Atom One Light",
   "workbench.iconTheme": "file-icons",
   "workbench.sideBar.location": "right"
