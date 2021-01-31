@@ -16,6 +16,8 @@ set complete+=kspell
 set mouse=a
 " jj exists Insert Mode
 :imap jj <Esc>
+" map Leader key to comma
+let mapleader = ','
 " }}}
 
 " :PlugInstall vim-plug plugins {{{
@@ -222,6 +224,20 @@ nnoremap qw :silent! normal mpea'<ESC>bi'<ESC>`pl
 nnoremap qd :silent! normal mpea"<ESC>bi"<ESC>`pl
 " Remove quotes around word
 nnoremap wq :silent! normal mpeld bhd `ph<CR>
+" }}}
+
+" Split {{{
+" ------------
+nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent><Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent><Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+" }}}
+
+" Terminal {{{
+" ------------
+" Alt+m creates new tab
+map <Leader>t <esc>:bot term<CR>
 " }}}
 
 " vim:foldmethod=marker
