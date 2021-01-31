@@ -6,10 +6,14 @@ set nocompatible
 set autoread
 " Increase search history
 set history=1000
+" Set maximum characters per line
+set textwidth=80
 " Turn off bell
 set belloff=all
 " Autocomplete with dictionary words when spell check is on
 set complete+=kspell
+" Enable mouse scroll
+set mouse=a
 " jj exists Insert Mode
 :imap jj <Esc>
 " }}}
@@ -26,6 +30,8 @@ Plug 'sheerun/vim-polyglot'
 " Fuzzy find
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+" emmet
+Plug 'mattn/emmet-vim'
 " ESLint
 Plug 'dense-analysis/ale'
 call plug#end()
@@ -206,6 +212,16 @@ let g:netrw_winsize=25
 let g:netrw_list_hide=netrw_gitignore#Hide()
 " CTRL+b opens Netrw
 noremap <silent> <C-b> :Vexplore<CR>
+" }}}
+
+" quote words {{{
+" ---------------
+" Add single quotes around word
+nnoremap qw :silent! normal mpea'<ESC>bi'<ESC>`pl
+" Add double quotes around word
+nnoremap qd :silent! normal mpea"<ESC>bi"<ESC>`pl
+" Remove quotes around word
+nnoremap wq :silent! normal mpeld bhd `ph<CR>
 " }}}
 
 " vim:foldmethod=marker
