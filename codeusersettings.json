@@ -2,6 +2,7 @@
   "breadcrumbs.enabled": true,
   "editor.fontSize": 16,
   "editor.formatOnSave": true,
+  "editor.minimap.enabled": true,
   "editor.tabSize": 2,
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 100,
@@ -9,8 +10,10 @@
   "telemetry.enableCrashReporter": false,
   "telemetry.enableTelemetry": false,
   "terminal.integrated.fontSize": 14,
+  "window.zoomLevel": 0,
   "workbench.colorTheme": "Atom One Light",
   "workbench.iconTheme": "file-icons",
-  "workbench.sideBar.location": "right"
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "newUntitledFile"
 }
 
