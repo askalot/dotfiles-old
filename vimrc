@@ -241,6 +241,8 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " Terminal {{{
 " ------------
+" Always split below
+set splitbelow
 " Alt+m creates new tab
 map <Leader>t <esc>:bot term<CR>
 " }}}
