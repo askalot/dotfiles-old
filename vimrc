@@ -36,6 +36,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'mattn/emmet-vim'
 " ESLint
 Plug 'dense-analysis/ale'
+" vim-fugitive
+Plug 'tpope/vim-fugitive'
 call plug#end()
 " }}}
 
