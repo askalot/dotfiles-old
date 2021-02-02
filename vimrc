@@ -18,6 +18,8 @@ set mouse=a
 :imap jj <Esc>
 " map Leader key to comma
 let mapleader = ','
+" show confirmation when quitting, instead of throwing error
+set confirm
 " }}}
 
 " :PlugInstall vim-plug plugins {{{
