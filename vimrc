@@ -247,4 +247,12 @@ set splitbelow
 map <Leader>t <esc>:bot term<CR>
 " }}}
 
+" Backup files {{{
+" ----------------
+" Save in current directory, ~/.backup, and ~/tmp/
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
+" }}}
+
 " vim:foldmethod=marker
