@@ -5,6 +5,8 @@
   user = username
 [init]
   defaultBranch = main
+[push]
+  default = current
 [alias]
   co = checkout
   la = log --oneline --decorate --graph --stat
