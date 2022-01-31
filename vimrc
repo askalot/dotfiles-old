@@ -40,6 +40,10 @@ Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
 " vim-fugitive
 Plug 'tpope/vim-fugitive'
+" Goyo
+Plug 'junegunn/goyo.vim'
+" vim-gitgutter
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 " }}}
 
@@ -64,7 +68,7 @@ let g:ale_fix_on_save = 1
 " Colours {{{
 " -----------
 colorscheme one
-set background=light
+set background=dark
 " Use correct colour palette
 set termguicolors
 " Enable syntax highlighting
@@ -243,7 +247,7 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 " ------------
 " Always split below
 set splitbelow
-" Alt+m creates new tab
+" Open terminal in split-below
 map <Leader>t <esc>:bot term<CR>
 " }}}
 
