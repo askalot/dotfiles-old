@@ -47,4 +47,5 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/local/opt/chruby/share/chruby/chruby.sh
 source /usr/local/opt/chruby/share/chruby/auto.sh
 
-
+alias cb='git branch --sort=-committerdate | fzf --header Checkout | xargs git checkout'
+alias tree='tree -I "node_modules|.git"'
