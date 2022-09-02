@@ -1,0 +1,12 @@
+colors:
+  primary:
+    background: '#303030'
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+  size: 16.0
+window:
+  decorations: buttonless
+  padding:
+    x: 10
+    y: 10
