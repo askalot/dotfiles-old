@@ -10,8 +10,6 @@ set history=1000
 set textwidth=80
 " Turn off bell
 set belloff=all
-" Autocomplete with dictionary words when spell check is on
-set complete+=kspell
 " Enable mouse scroll
 set mouse=a
 " jj exists Insert Mode
@@ -40,17 +38,21 @@ Plug 'mattn/emmet-vim'
 Plug 'dense-analysis/ale'
 " vim-fugitive
 Plug 'tpope/vim-fugitive'
+" vim-commentary
+Plug 'tpope/vim-commentary'
 " Goyo
 Plug 'junegunn/goyo.vim'
 " vim-gitgutter
 Plug 'airblade/vim-gitgutter'
+" nerdtree
+Plug 'preservim/nerdtree'
 call plug#end()
 " }}}
 
 " fzf {{{
 " -------
 nnoremap <C-p> :Files<CR>
-nnoremap <C-f> :Ag<CR>
+nnoremap <C-f> :Rg<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>h :History<CR>
 " }}}
@@ -96,10 +98,10 @@ set list
 " ----------------
 set number
 set numberwidth=5
-set relativenumber
+"set relativenumber
 " Disable relativenumber in Insert Mode
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
+"autocmd InsertEnter * :set norelativenumber
+"autocmd InsertLeave * :set relativenumber
 " }}}
 
 " Scrolling {{{
@@ -126,6 +128,8 @@ noremap <C-S-right> <esc>:tabnext<cr>
 " -----------
 " Indent based fold
 set foldmethod=indent
+" Increase fold gutter
+set foldcolumn=3
 " Only fold upto 3 nested levels
 set foldnestmax=3
 " Disable folding by default
@@ -187,12 +191,15 @@ nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR
 
 " :grep files {{{
 " ---------------
-" Use ag instead of grep
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
+" Use rg instead of grep
+if executable('rg')
+  set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 endif
 " K greps word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" Navigate quickfix list
+nnoremap <silent> [q :cprevious<CR>
+nnoremap <silent> ]q :cnext<CR>
 " }}}
 
 " :find files {{{
@@ -237,6 +244,10 @@ nnoremap wq :silent! normal mpeld bhd `ph<CR>
 
 " Split {{{
 " ------------
+" Always split below
+set splitbelow
+" Always split right
+set splitright
 nnoremap <silent><Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent><Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent><Leader>> :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
@@ -245,10 +256,10 @@ nnoremap <silent><Leader>< :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
 " Terminal {{{
 " ------------
-" Always split below
-set splitbelow
 " Open terminal in split-below
 map <Leader>t <esc>:bot term<CR>
+" Open terminal in window size
+map <Leader>z <esc>:term ++curwin<CR>
 " }}}
 
 " Backup files {{{
@@ -259,4 +270,63 @@ set directory=.swp/,~/.swp/,/tmp//
 set undodir=.undo/,~/.undo/,/tmp//
 " }}}
 
-" vim:foldmethod=marker
+" Spelling {{{
+" ----------------
+" Toggle spell-checking with Leader+s
+function! ToggleSpell()
+  set spell!
+endfunction
+nnoremap <silent><Leader>s :call ToggleSpell()<CR>
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
+" Spell-check Markdown files
+autocmd FileType markdown setlocal spell
+" Spell-check Git messages
+autocmd FileType gitcommit setlocal spell
+" }}}
+
+"set rtp+=/usr/local/opt/fzf
+
+" Comments
+" --------
+noremap <Leader>/ :Commentary<CR>
+
+" Auto-close
+" ----------
+" Close brackets with return
+inoremap (<CR> (<CR>)<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
+inoremap {<CR> {<CR>}<Esc>O
+" Close brackets without return
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+" Overwrite already closed bracket
+inoremap <expr>) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr>] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap <expr>} strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+inoremap <expr>' strpart(getline('.'), col('.')-1, 1) == "'" ? "\<Right>" : "''<Left>"
+inoremap <expr>" strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"<Left>"
+" Surroud word in normal mode
+nnoremap ( mmbi(<Esc>ea)<Esc>`m<Right>
+nnoremap [ mmbi[<Esc>ea]<Esc>`m<Right>
+nnoremap { mmbi{<Esc>ea}<Esc>`m<Right>
+nnoremap ' mmbi'<Esc>ea'<Esc>`m<Right>
+nnoremap " mmbi"<Esc>ea"<Esc>`m<Right>
+" Surroud word in visual mode
+vnoremap ( <Esc>`<i(<Esc>`>a<Right>)<Esc>
+vnoremap [ <Esc>`<i[<Esc>`>a<Right>]<Esc>
+vnoremap { <Esc>`<i{<Esc>`>a<Right>}<Esc>
+vnoremap ' <Esc>`<i'<Esc>`>a<Right>'<Esc>
+vnoremap " <Esc>`<i"<Esc>`>a<Right>"<Esc>
+
+" Compile
+" -------
+" Python
+autocmd FileType python map <buffer> <Leader>r :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <Leader>r <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+" Go
+autocmd FileType go map <buffer> <Leader>r :w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
+autocmd FileType go imap <buffer> <Leader>r <esc>:w<CR>:exec '!clear; go run' shellescape(@%, 1)<CR>
+
+" vim: foldmethod=marker
