@@ -97,7 +97,6 @@ set list
 " Line numbers {{{
 " ----------------
 set number
-set numberwidth=5
 "set relativenumber
 " Disable relativenumber in Insert Mode
 "autocmd InsertEnter * :set norelativenumber
@@ -107,7 +106,8 @@ set numberwidth=5
 " Scrolling {{{
 " -------------
 " Number of lines offset from cursor top or bottom
-set scrolloff=1
+" set scrolloff=1
+set scrolloff=8
 " Number of columns offset from cursor left or right
 set sidescrolloff=5
 " Try to show paragraph last line
