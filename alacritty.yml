@@ -1,12 +1,15 @@
 colors:
   primary:
-    background: '#303030'
+    background: '#24272D'
 font:
   normal:
     family: JetBrainsMono Nerd Font
   size: 16.0
 window:
   decorations: buttonless
+  opacity: 0.95
   padding:
     x: 10
     y: 10
+shell:
+  program: /usr/local/bin/tmux
