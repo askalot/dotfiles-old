@@ -259,6 +259,12 @@ set listchars+=nbsp:+
 set list
 "  }}}
 
+" Airline {{{
+" ------------
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+" }}}
+
 " Comments {{{
 " ------------
 nnoremap <Leader>/ :Commentary<CR>
